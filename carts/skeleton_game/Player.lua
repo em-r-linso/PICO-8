@@ -3,6 +3,7 @@ function Player:New()
 	local o = Character:New(config.playerMaxHp, 1, 1)
 	setmetatable(o, self)
 	self.__index = self
+
 	return o
 end
 

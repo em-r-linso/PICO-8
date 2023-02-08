@@ -1,4 +1,3 @@
-objects = {}
 numberOfAnims = 0
 
 function _draw()
@@ -34,9 +33,8 @@ function _draw()
 		spr(object.sprite, object.position.x - 4, object.position.y - 4, 1, 1, object.spriteFlip) -- -4 to center the sprite
 	end
 
-	
-	-- debug quadtree view
-	DrawQuadTree(tree)
+	-- draw quadTree for debugging
+	qt:Draw()
 
 	-- UI on top
 	camera(0, 0)
@@ -44,16 +42,6 @@ function _draw()
 		HpBar()
 	else
 		GameOver()
-	end
-end
-	
-function DrawQuadTree(tree)
-	-- draw the bounds of the current node
-	rect(tree.bounds.x, tree.bounds.y, tree.bounds.x + tree.bounds.w, tree.bounds.y + tree.bounds.h)
-	
-	-- visualize the child nodes
-	for i = 1, #tree.nodes do
-		DrawQuadTree(tree.nodes[i])
 	end
 end
 

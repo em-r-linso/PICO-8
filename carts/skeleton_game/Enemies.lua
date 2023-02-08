@@ -39,7 +39,7 @@ function Enemy:Spawn()
 		newEnemy.position = Vector:New(spawnX + player.position.x - 64, spawnY + player.position.y - 64)
 		add(objects, newEnemy)
 		add(enemies, newEnemy)
-		InsertObject(tree, newEnemy)
+		qt:Insert(newEnemy)
 	end
 end
 
@@ -74,6 +74,9 @@ function Enemy:Move()
 
 	-- look where you're going
 	self.spriteFlip = vectorToTarget.x < 0
+
+	-- check if you've exited your current quadtree node
+	self:CheckQTNodeBounds() -- this will remove and reinsert the object if necessary
 end
 
 function Enemy:SetTargetAll()

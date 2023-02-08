@@ -16,12 +16,13 @@
 	hpBarHeight = 3,
 	enemyBounceBack = 50,
 	playerMaxHp = 9999, -- set to 9999 for testing
-	hurtFrames = 2
+	hurtFrames = 2,
+	quadTreeSize = 1000,
+	quadTreeCapacity = 4,
+	quadTreeMaxNodes = 1000
 }
 
 function _update()
-
-	LagAlert()
 
 	-- player
 	player:Move()
@@ -35,11 +36,13 @@ function _update()
 	-- rendering
 	-- SortByY()
 	AnimateSprites()
+
+	LagAlert()
 end
 
 function LagAlert()
-	if stat(0) < 60 then
-		Log("LOW FPS: " .. stat(0))
+	if stat(7) < 30 then
+		Log("LOW FPS: " .. stat(7))
 	end
 end
 
